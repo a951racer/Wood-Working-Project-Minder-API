@@ -28,8 +28,7 @@ exports.getProjectWithID = (req, res) => {
 }
 
 exports.addNewProject = (req, res) => {
-    let project = req.body
-    project.save((err, project) => {
+    Project.create(req.body, (err, project) => {
         if (err) {
             res.send(err);
         }
