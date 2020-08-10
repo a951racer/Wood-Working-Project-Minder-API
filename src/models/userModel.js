@@ -15,7 +15,17 @@ export const UserSchema = new Schema({
     created_date: {
        type: Date,
        default: Date.now 
-    }
+    },
+    firstName: String,
+    lastName: String,
+    dba: String,
+    units: {
+      type: String,
+      enum: ['inches', 'cm'],
+      default: 'inches'
+    },
+    roughLength: Number,
+    roughWidth: Number
 });
 
 UserSchema.methods.comparePassword = (password, hashPassword) => {

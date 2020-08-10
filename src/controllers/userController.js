@@ -28,6 +28,38 @@ exports.register = (req, res) => {
   })
 }
 
+exports.fetch = (req, res) => {
+  console.log('finding: ', req.params.userId)
+  User.findById(req.params.userId, (err, user) => {
+    if (err) {
+      return res.status(400).send({
+          message: err
+      });
+    } else {
+      let foundUser = {}
+      for (let key of Object.keys(user._doc)) {
+        foundUser[key] = user[key];
+      }
+      foundUser.hashPassword = undefined;
+      return res.json(foundUser)
+    }
+  })
+}
+
+exports.update = (req, res) => {
+  User.findOneAndUpdate({_id: req.params.userId}, req.body, (err, updatedUser) => {
+    if (err) {
+      return res.status(400).send({
+          message: err
+      });
+    } else {
+      updatedUser.hashPassword = undefined
+      return res.json(updatedUser)
+    }
+  })
+
+}
+
 exports.login = (req, res) => {
    User.findOne({
        email: req.body.email
