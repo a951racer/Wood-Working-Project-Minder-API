@@ -22,16 +22,12 @@ export const ProjectSchema = new Schema({
           type: String,
           enum: ['Sheet', 'Dimensional', 'Hardwood']
         },
-        roughDims: {
-          length: Number,
-          width: Number,
-          thickness: Number
-        },
-        finalDims: {
-          length: Number,
-          width: Number,
-          thickness: Number
-        },
+        roughLength: Number,
+        roughWidth: Number,
+        roughThickness: Number,
+        finalLength: Number,
+        finalWidth: Number,
+        finalThickness: Number,
         joinery: String,
         shaping: String
       }
