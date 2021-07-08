@@ -8,19 +8,7 @@
     }
   ],
   "env": {
-    "DB_CLUSTER": {
-      "required": true
-    },
-    "DB_NAME": {
-      "required": true
-    },
-    "DB_OPTIONS": {
-      "required": true
-    },
-    "DB_PASSWORD": {
-      "required": true
-    },
-    "DB_USER": {
+    "MONGO_CONNECT_STRING": {
       "required": true
     },
     "PORT": {
