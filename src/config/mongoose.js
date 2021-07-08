@@ -4,12 +4,7 @@ const MongoClient = require('mongodb').MongoClient
 
 module.exports = function() {
   mongoose.Promise = global.Promise
-  let conn_string = 'mongodb://'
-  conn_string += process.env.DB_USER + ':'
-  conn_string += process.env.DB_PASSWORD + '@'
-  conn_string += process.env.DB_CLUSTER + '/'
-  conn_string += process.env.DB_NAME + '?'
-  conn_string += process.env.DB_OPTIONS
+  let conn_string = process.env.MONGO_CONNECT_STRING
   const db = mongoose.connect(conn_string)
 
   require('../models/userModel');

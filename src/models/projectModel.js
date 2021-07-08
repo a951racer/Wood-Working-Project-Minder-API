@@ -7,11 +7,7 @@ export const ProjectSchema = new Schema({
         type: String,
         required: true
     },
-    type: {
-        type: String,
-        enum: ['Furniture', 'Jig', 'Shop Fixture']
-    },
-    subType: String,
+    tags: [String],
     description: String,
     coverImage: String,
     boards: [
