@@ -8,7 +8,7 @@
     }
   ],
   "env": {
-    "MONGO_CONNECY_STRING": {
+    "MONGO_CONNECT_STRING": {
       "required": true
     },
     "PORT": {
