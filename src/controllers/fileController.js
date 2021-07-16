@@ -32,14 +32,14 @@ exports.getProjectWithID = (req, res) => {
 
 exports.addNewFile = (req, res) => {
     const { body } = req
-    const { type, projectId } = body
+    const { mediaType, projectId } = body
     const file = req.file
     const s3FileURL = process.env.AWS_Uploaded_File_URL_LINK
     let folder = ''
 
-    const fileName = projectId + '.' + file.originalname.split('.')[1]
+    const fileName = projectId + '.' + file.mimetype.split('/')[1]
 
-    switch (type) {
+    switch (mediaType) {
         case 'thumbnail':
             folder = '/images'
     }
