@@ -35,12 +35,25 @@ exports.addNewFile = (req, res) => {
     const file = req.file
     const s3FileURL = process.env.AWS_Uploaded_File_URL_LINK
     let folder = ''
-
-    const fileName = projectId + '.' + file.mimetype.split('/')[1]
+    let fileName = ''
 
     switch (mediaType) {
         case 'thumbnail':
-            folder = '/images'
+            folder = `/${projectId}`
+            fileName = 'Thumbnail.png'
+            break
+        case 'boards':
+            folder = `/${projectId}`
+            fileName = 'Boards.csv'
+            break
+        case 'project-media':
+            folder = `/${projectId}/library`
+            fileName = file.originalname
+            break
+        case 'library':
+            folder = '/library'
+            fileName = file.originalname
+            break
     }
 
     let s3bucket = new AWS.S3({
