@@ -102,11 +102,10 @@ exports.importBoards = async (req, res) => {
             project.boards = boards
             Project.findOneAndUpdate({ _id: projectId}, project, { new: true }, (err, project) => {
                 if (err) {
-                    res.send(err);
+                    res.send(err)
                 }
             })
         
-            res.json(project);
-            console.log("csv parse process finished");
+            res.json(project)
         })
 }
