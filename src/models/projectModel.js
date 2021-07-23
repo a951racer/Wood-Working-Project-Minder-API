@@ -14,6 +14,7 @@ export const ProjectSchema = new Schema({
       {
         label: String,
         name: String,
+        quantity: Number,
         material: {
           type: String,
           enum: ['Sheet', 'Dimensional', 'Hardwood']
@@ -24,6 +25,7 @@ export const ProjectSchema = new Schema({
         finalLength: Number,
         finalWidth: Number,
         finalThickness: Number,
+        description: String,
         joinery: String,
         shaping: String
       }

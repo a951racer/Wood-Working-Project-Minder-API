@@ -25,7 +25,8 @@ export const UserSchema = new Schema({
       default: 'inches'
     },
     roughLength: Number,
-    roughWidth: Number
+    roughWidth: Number,
+    roughThickness: Number
 });
 
 UserSchema.methods.comparePassword = (password, hashPassword) => {
