@@ -6,10 +6,8 @@ import { UserSchema } from '../models/userModel';
 const User = mongoose.model('User', UserSchema);
 
 exports.register = (req, res) => {
-  console.log('registering: ', req.body)
   const newUser = new User(req.body);
   newUser.hashPassword = bcrypt.hashSync(req.body.password, 10);
-  console.log('new user: ', newUser)
   newUser.save((err, user) => {
     console.log('saved')
     if (err) {

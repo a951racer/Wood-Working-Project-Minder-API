@@ -2,6 +2,7 @@ const AWS = require('aws-sdk')
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const moment = require('moment')
+const importBoards = require('../services/importBoards')
 
 const Project = mongoose.model('Project')
 
@@ -70,16 +71,20 @@ exports.addNewFile = (req, res) => {
       ACL: "public-read"
     }
   
-    s3bucket.upload(params, function(err, data) {
+    s3bucket.upload(params, (err, data) => {
         if (err) {
             res.status(500).json({ error: true, Message: err });
         } else {
-            res.send({ data })
-            var newFileUploaded = {
-                description: req.body.description,
-                fileLink: s3FileURL + file.originalname,
-                s3_key: params.Key
-            };
+            if (mediaType === 'boards') {
+                importBoards(projectId, req.user._id, (err, project) => {
+                    if (err) {
+                        return res.send(err)
+                    }
+                    return res.json(project)
+                })
+            } else {
+                return res.send({ data })
+            }
         }
     })
 }

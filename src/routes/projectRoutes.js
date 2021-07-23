@@ -11,7 +11,7 @@ module.exports = function(app) {
         .put(loginRequired, projects.updateProject)
         .delete(loginRequired, projects.deleteProject)
 
-    app.route('/project/import-boards/:projectId/:userId')
+    app.route('/project/import-boards/:projectId')
         .post(loginRequired, projects.importBoards)
 
 }
