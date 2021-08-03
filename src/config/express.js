@@ -37,6 +37,7 @@ module.exports = function() {
     require('../routes/userRoutes')(app)
     require('../routes/projectRoutes')(app)
     require('../routes/fileRoutes')(app)
+    require('../routes/libraryRoutes')(app)
 
     app.use(express.static('public'));
     

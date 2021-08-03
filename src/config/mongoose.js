@@ -9,6 +9,7 @@ module.exports = function() {
 
   require('../models/userModel');
   require('../models/projectModel');
+  require('../models/libraryItemModel');
   console.log('connected')
   return db;
 };
