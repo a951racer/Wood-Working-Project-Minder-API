@@ -7,9 +7,10 @@ module.exports = function() {
   let conn_string = process.env.MONGO_CONNECT_STRING
   const db = mongoose.connect(conn_string)
 
-  require('../models/userModel');
-  require('../models/projectModel');
-  require('../models/libraryItemModel');
+  require('../models/userModel')
+  require('../models/projectModel')
+  require('../models/libraryItemModel')
+  require('../models/jobModel')
   console.log('connected')
-  return db;
+  return db
 };
