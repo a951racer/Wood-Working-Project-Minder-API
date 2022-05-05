@@ -1,31 +1,10 @@
 import mongoose from 'mongoose';
+import { ReportSchema } from './reportModel'
+import { BoardSchema } from './boardModel'
+import { LibraryItemSchema } from './libraryItemModel'
+import { NoteSchema } from './noteModel';
 
 const Schema = mongoose.Schema;
-
-const ReportSchema = new Schema({
-    title: String,
-    type: String,
-    path: String
-})
-
-const BoardSchema = new Schema({
-  label: String,
-  name: String,
-  quantity: Number,
-  material: {
-    type: String,
-    enum: ['Sheet', 'Dimensional', 'Hardwood']
-  },
-  roughLength: Number,
-  roughWidth: Number,
-  roughThickness: Number,
-  finalLength: Number,
-  finalWidth: Number,
-  finalThickness: Number,
-  description: String,
-  joinery: String,
-  shaping: String
-})
 
 export const ProjectSchema = new Schema({
     name: {
@@ -38,7 +17,8 @@ export const ProjectSchema = new Schema({
     reports: [ReportSchema],
     boards: [BoardSchema],
     model: String,
-    sheetsId: String
+    library: [LibraryItemSchema],
+    notes: [NoteSchema]
 
 });
 

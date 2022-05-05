@@ -11,6 +11,10 @@ module.exports = function() {
   require('../models/projectModel')
   require('../models/libraryItemModel')
   require('../models/jobModel')
+  require('../models/boardModel')
+  require('../models/noteModel')
+  require('../models/reportModel')
+
   console.log('connected')
   return db
 };

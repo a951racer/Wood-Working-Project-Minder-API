@@ -32,7 +32,7 @@ exports.getProjectWithID = (req, res) => {
 
 exports.addNewFile = (req, res) => {
     const { body } = req
-    const { mediaType, projectId } = body
+    const { mediaType, id } = body
     const file = req.file
     const s3FileURL = process.env.AWS_Uploaded_File_URL_LINK
     let folder = ''
@@ -40,15 +40,19 @@ exports.addNewFile = (req, res) => {
 
     switch (mediaType) {
         case 'thumbnail':
-            folder = `/${projectId}`
+            folder = `/${id}`
             fileName = 'Thumbnail.png'
             break
         case 'boards':
-            folder = `/${projectId}`
+            folder = `/${id}`
             fileName = 'Boards.csv'
             break
         case 'project-media':
-            folder = `/${projectId}/library`
+            folder = `/${id}/library`
+            fileName = file.originalname
+            break
+        case 'job-media':
+            folder = `/${id}/library`
             fileName = file.originalname
             break
         case 'library':
@@ -76,7 +80,7 @@ exports.addNewFile = (req, res) => {
             res.status(500).json({ error: true, Message: err });
         } else {
             if (mediaType === 'boards') {
-                importBoards(projectId, req.user._id, (err, project) => {
+                importBoards(id, req.user._id, (err, project) => {
                     if (err) {
                         return res.send(err)
                     }
@@ -88,24 +92,3 @@ exports.addNewFile = (req, res) => {
         }
     })
 }
-
-/*
-exports.updateProject = (req, res) => {
-    let project = req.body
-    Project.findOneAndUpdate({ _id: req.params.projectId}, project, { new: true }, (err, project) => {
-        if (err) {
-            res.send(err);
-        }
-        res.json(project);
-    })
-}
-
-exports.deleteProject = (req, res) => {
-    Project.remove({ _id: req.params.projectId }, (err, project) => {
-        if (err) {
-            res.send(err);
-        }
-        res.json({ message: 'Successfully deleted Project'});
-    })
-}
-*/
