@@ -1,6 +1,9 @@
 import mongoose from 'mongoose'
+import { LibraryItemSchema } from './libraryItemModel'
+import { ReportSchema } from './reportModel'
+import { BoardSchema } from './boardModel'
+import { NoteSchema } from './noteModel';
 
-const Project = mongoose.model('Project')
 const Schema = mongoose.Schema
 
 const TimeSlipSchema = new Schema({
@@ -24,9 +27,17 @@ export const JobSchema = new Schema({
     },
     tags: [String],
     description: String,
+    customer: String,
+    startDate: Date,
+    endDate: Date,
     projectId: {  type: Schema.Types.ObjectId, ref: 'Project' },
     timeSlips: [TimeSlipSchema],
     materials: [MaterialSchema],
+    coverImage: String,
+    reports: [ReportSchema],
+    boards: [BoardSchema],
+    library: [LibraryItemSchema],
+    notes: [NoteSchema]
 });
 
 mongoose.model('Job', JobSchema)
