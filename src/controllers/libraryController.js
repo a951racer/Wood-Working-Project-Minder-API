@@ -7,7 +7,7 @@ const Library = mongoose.model('LibraryItem')
 exports.getItem = (req, res) => {
     const today = moment().utcOffset('America/Chicago').startOf('day').toDate()
     Library.find()
-        .sort({name: 1})
+        .sort({title: 1})
         .exec((err, libraryItems) => {
         if (err) {
             res.send(err)
