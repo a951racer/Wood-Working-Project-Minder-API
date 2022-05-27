@@ -19,7 +19,6 @@ export const ProjectSchema = new Schema({
     model: String,
     library: [LibraryItemSchema],
     notes: [NoteSchema]
-
 });
 
 mongoose.model('Project', ProjectSchema);
