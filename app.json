@@ -26,5 +26,5 @@
   "name": "Menu-Master-API-Mongo",
   "scripts": {
   },
-  "stack": "heroku-18"
+  "stack": "heroku-24"
 }
