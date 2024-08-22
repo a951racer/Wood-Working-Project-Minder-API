@@ -5,9 +5,7 @@ import dotenv from 'dotenv'
 import cors from 'cors'
 import morgan from 'morgan'
 import helmet from 'helmet'
-import multer from 'multer'
-import AWS from 'aws-sdk'
-import fs from 'fs'
+
 
 module.exports = function() {
     dotenv.config();
