@@ -1,4 +1,4 @@
-const AWS = require('aws-sdk')
+//const AWS = require('aws-sdk')
 const mongoose = require('mongoose')
 const parse = require('csv-parse')
 
