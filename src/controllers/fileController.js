@@ -1,5 +1,4 @@
 //const AWS = require('aws-sdk')
-//import { S3Client } from "@aws-sdk/client-s3"
 
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
