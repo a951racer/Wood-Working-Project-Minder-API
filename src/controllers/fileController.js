@@ -1,8 +1,9 @@
-const AWS = require('aws-sdk')
+//const AWS = require('aws-sdk')
+//import { S3Client } from "@aws-sdk/client-s3";
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const moment = require('moment')
-const importBoards = require('../services/importBoards')
+//const importBoards = require('../services/importBoards')
 
 const Project = mongoose.model('Project')
 
@@ -61,7 +62,7 @@ exports.addNewFile = (req, res) => {
             break
     }
 
-    let s3bucket = new AWS.S3({
+    let s3bucket = new S3Client.S3({
       accessKeyId: process.env.AWS_ACCESS_KEY_ID,
       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
       region: process.env.AWS_REGION
